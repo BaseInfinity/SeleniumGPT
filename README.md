@@ -1,32 +1,34 @@
-# 🤖 Chrome-GPT: An experimental AutoGPT agent that interacts with Chrome
+# 🤖 SeleniumGPT: An experimental Selenium E2E Test Generator 
+Forked from the Amazing ChromeGPT agent:
+https://github.com/richardyc/Chrome-GPT
+
+CREDIT WHERE CREDIT IS DUE WITHOUT HIM I COULD NOT HAVE MADE THIS THANK YOU!
+https://github.com/richardyc
  
-[![lint](https://github.com/richardyc/chrome-gpt/actions/workflows/lint.yml/badge.svg)](https://github.com/richardyc/chrome-gpt/actions/workflows/lint.yml) [![test](https://github.com/richardyc/chrome-gpt/actions/workflows/tests.yml/badge.svg)](https://github.com/richardyc/chrome-gpt/actions/workflows/tests.yml) [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/RealRichomie.svg?style=social&label=Follow%20%40RealRichomie)](https://twitter.com/RealRichomie)
+[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/RealRichomie.svg?style=social&label=Follow%20%40RealRichomie)](https://twitter.com/RealRichomie)
 
 ⚠️This is an experimental AutoGPT agent that might take incorrect actions and could lead to serious consequences. Please use it at your own discretion⚠️
 
-Chrome-GPT is an AutoGPT experiment that utilizes [Langchain](https://github.com/hwchase17/langchain) and [Selenium](https://github.com/SeleniumHQ/selenium) to enable an AutoGPT agent take control of an entire Chrome session. With the ability to interactively scroll, click, and input text on web pages, the AutoGPT agent can navigate and manipulate web content.
+SeleniumGPT is an AutoGPT experiment that utilizes [Langchain](https://github.com/hwchase17/langchain) and [Selenium](https://github.com/SeleniumHQ/selenium) to enable an AutoGPT agent take control of an entire Chrome session. With the ability to interactively scroll, click, and input text on web pages, the AutoGPT agent can navigate and manipulate web content. 
+
+This fork takes it a step further and allows you GENERATE END-TO-END TESTS ALONG THE WAY
 
 <h2 align="center"> 🖥️ Demo </h2>
 
-Input Prompt: `Find me a bar that can host a 20 person event near Chelsea, Manhattan evening of Apr 30th. Fill out contact us form if they have one with info: Name Richard, email he@hrichard.com.`
+[![Video](https://img.youtube.com/vi/cxoUJwIozPI/maxresdefault.jpg)](https://www.youtube.com/watch?v=cxoUJwIozPI)
 
-https://user-images.githubusercontent.com/14324698/234191011-ec73af54-4a8e-4298-be1d-4252050f08c1.mov
+Input Prompt: `Go to BestBuy and Search for a Nintendo Switch and Add it to your Cart. Your Task is Complete after adding to Cart.`
 
-Demo made by [Richard He](https://twitter.com/RealRichomie)
 
-<h2 align="center"> 🔮 Features </h2>
 
-- 🌎 Google search
-- 🧠 Long-term and short-term memory management
-- 🔨 Chrome actions: describe a webpage, scroll to element, click on buttons/links, input forms, switch tabs
-- 🤖 Supports multiple agent types: Zero-shot, BabyAGI and Auto-GPT
-- 🔥 (IN PROGRESS) Chrome plugin support
+Demo made by [Stefan Ayala](https://www.youtube.com/@Basecase_/featured)
 
 <h2 align="center"> 🧱 Known Limitations </h2>
 
 - There are limited web crawling features, with buttons and input fields sometimes failing to appear in prompt.
 - The response time is slow, with each action taking between 1-10 seconds to run.
 - At times, langchain agents are unable to parse GPT outputs (refer to langchain discussion: https://github.com/hwchase17/langchain/discussions/4065). If you run into this, try specifying a different agent; ie: `python -m chromegpt -a auto-gpt -v -t "{your request}"
+- EXTREMELY EXPERIMENTAL
 
 <h2 align="center"> Requirements </h2>
 
@@ -62,8 +64,4 @@ Options:
                                   when using auto-gpt agent
   --help                          Show this message and exit.
 ```
-
-<h2 align="center"> ⭐ Star History </h2>
-
-[![Star History Chart](https://api.star-history.com/svg?repos=richardyc/Chrome-GPT&type=Date)](https://star-history.com/#richardyc/Chrome-GPT&Date)
 
