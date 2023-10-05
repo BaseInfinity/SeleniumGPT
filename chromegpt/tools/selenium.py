@@ -16,9 +16,15 @@ from typing import Any, Dict, List, Optional
 import validators
 from bs4 import BeautifulSoup
 from pydantic import BaseModel, Field
-from selenium import webdriver
-from selenium.common.exceptions import (
-    WebDriverException,
+
+from chromegpt.tools.logging_actionchains import LoggingActionChains
+from chromegpt.tools.logging_webdriver import LoggingWebDriver
+from chromegpt.tools.selenium_code_generator import (
+    generate_selenium_code,
+    wipe_selenium_code,
+)
+from chromegpt.tools.logging_webdriver import (
+    clear_selenium_commands_log,
 )
 
 from chromegpt.tools.utils import (
@@ -48,12 +54,20 @@ class SeleniumWrapper:
             chrome_options.add_argument("--headless")
         else:
             chrome_options.add_argument("--start-maximized")
-        self.driver = webdriver.Chrome(options=chrome_options)
-        self.driver.implicitly_wait(5)  # Wait 5 seconds for elements to load
+        clear_selenium_commands_log()
+
+        self.driver = LoggingWebDriver(options=chrome_options)
+
+        self.driver.implicitly_wait(10)  # Wait 5 seconds for elements to load
 
     def __del__(self) -> None:
         """Close Selenium session."""
+        # output driver_logs to selenium_commands.log file
+
         self.driver.close()
+        wipe_selenium_code()
+        generate_selenium_code("selenium_commands.log", "selenium_code.py")
+
 
     def previous_webpage(self) -> str:
         """Go back in browser history."""
@@ -196,9 +210,9 @@ class SeleniumWrapper:
                     f" {json.dumps(all_buttons)}"
                 )
 
-            # Scroll the element into view and Click the element using JavaScript
+            # Scroll the element into view and Click
             before_content = self.describe_website()
-            actions = ActionChains(self.driver)
+            actions = LoggingActionChains(self.driver)
             actions.move_to_element(selected_element).click().perform()
             after_content = self.describe_website()
             if before_content == after_content:
