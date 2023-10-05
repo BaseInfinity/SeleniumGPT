@@ -15,7 +15,8 @@ This fork takes it a step further and allows you GENERATE END-TO-END TESTS ALONG
 
 <h2 align="center"> 🖥️ Demo </h2>
 
-[![Video](https://img.youtube.com/vi/cxoUJwIozPI/maxresdefault.jpg)](https://www.youtube.com/watch?v=cxoUJwIozPI)
+
+https://github.com/BaseInfinity/SeleniumGPT/assets/1424113/2f33c88e-b6e1-444c-987b-d5e6952c5395
 
 Input Prompt: `Go to BestBuy and Search for a Nintendo Switch and Add it to your Cart. Your Task is Complete after adding to Cart.`
 
